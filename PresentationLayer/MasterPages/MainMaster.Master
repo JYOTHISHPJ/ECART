@@ -1,0 +1,119 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainMaster.master.cs" Inherits="PresentationLayer.MasterPages.MainMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <title></title>
+    <asp:ContentPlaceHolder ID="cphHead" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
+
+    <style>
+        .dropbtn {
+            background-color: #232f3e;
+            color: #ccc;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            width: 160px;
+            transition: background-color, color;
+            transition-duration: 0.4s;
+        }
+
+        .dropdown {
+            display: inline-block;
+            top: -95px;
+            left: -844px;
+            height: 68px;
+            width: 161px;
+            color: #ccc;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #232f3e;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 999999;
+        }
+
+            .dropdown-content a {
+                color: #ccc;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                transition: background-color, color;
+                transition-duration: 0.4s;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ccc;
+                    color: #e47911;
+                    transition: background-color, color;
+                    transition-duration: 0.4s;
+                }
+
+                    .dropdown-content a:hover #btndropdown {
+                        border-bottom: 2px solid #e47911;
+                    }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropbtn:hover {
+            color: #e47911;
+            border-bottom: 2px solid #e47911;
+            transition: background-color, color;
+            transition-duration: 0.4s;
+        }
+    </style>
+
+
+
+</head>
+
+
+<body id="body">
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="scriptManager1" runat="server"></asp:ScriptManager>
+        <div style="background-color: #232f3e; margin-top: -0.6%; width: 100%; height: 180px">
+            <asp:ImageButton ID="imgbtnHome" runat="server" ImageUrl="~/PageImages/ECARTHome.png" Style="height: 40px; width: 40px; margin-top: 1%; position: absolute; margin-left: 4%;" title="Home" OnClick="imgbtnHome_Click" />
+            <asp:Label ID="lblHeader" runat="server" Text="Welcome To E - CART " Style="position: absolute; color: white; font-size: 37px; margin-left: 30%; margin-top: 1%;"></asp:Label>
+            <asp:Panel ID="searchPanel" runat="server" DefaultButton="SearchImgBtn">
+                <asp:TextBox ID="txtSearch" runat="server" placeholder="Search Here.." Style="position: absolute; padding: 8px 36px 7px 21px; width: 45.8%; margin-left: 18%; margin-top: 6%; font-size: 14px; font-family: arial,sans-serif;" OnTextChanged="SearchTextBox_TextChanged" MaxLength="50"></asp:TextBox>
+            </asp:Panel>
+            <asp:ImageButton ID="SearchImgBtn" runat="server" ImageUrl="~/PageImages/amazon.png" AlternateText="Amazon" title="Search Content" Style="position: absolute; margin-left: 65.5%; border-radius: 5px; margin-top: 6%;" OnClick="ImageButton1_Click" />
+            <asp:ImageButton ID="btnAdmin" runat="server" ImageUrl="~/PageImages/admin logo.png" Style="height: 40px; width: 40px; margin-top: 1%; position: absolute; margin-left: 90%;" title="Admin Login" OnClick="btnAdmin_Click" />
+            <asp:ImageButton ID="imgbtnCartLogo" runat="server" title="View Your Cart" ImageUrl="~/PageImages/cart logo.png" Style="height: 40px; width: 40px; position: absolute; margin-top: 10.5%; margin-left: 90.5%" OnClick="imgbtnCartLogo_Click" />
+            <asp:Button ID="btnCategory" runat="server" class="dropbtn" OnClick="btnCategory_Click" title="All Categories" Style="position: absolute; margin-left: 0px; margin-top: 10.7%;" Text="Shop By Category" />
+            <div class="dropdown" style="margin-left: 73%; margin-top: 11%; height: 40px;">
+                <button runat="server" id="btndropdown" style="margin-top: -1px;" class="dropbtn">Hello. Sign in</button>
+                <div class="dropdown-content">
+                    <% if (userid != 0)
+                       { %>
+                    <a href="../Transaction/Billing.aspx">YOUR ORDER</a>
+                    <a href="../Transaction/WishListCreation.aspx" id="atWishlist" runat="server">YOUR WISHLIST</a>
+                    <a id="ChangePassword" runat="server" href="../Login/Changepassword.aspx">CHANGE PASSWORD</a>
+                    <asp:LinkButton runat="server" ID="lbtnSignout" OnClick="lbtnSignout_Click">SIGN OUT</asp:LinkButton>
+                    <%}
+                       else
+                       { %>
+                    <a id="Signin" runat="server" href="../Login/login.aspx">SIGN IN</a>
+                    <a href="../Login/register.aspx">NEW ACCOUNT</a>
+                    <a href="../Transaction/WishListCreation.aspx" id="a1" runat="server">YOUR WISHLIST</a>
+                    <%} %>
+                </div>
+            </div>
+
+        </div>
+
+        <asp:ContentPlaceHolder ID="cphBody" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

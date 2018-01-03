@@ -1,0 +1,115 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="PresentationLayer.MasterPages.AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Welcome Admin </title>
+
+    <style type="text/css">
+        .mainmenu #mainli {
+            float: left;
+            position: relative;
+            width: auto;
+            cursor: pointer;
+            padding: 15px 20px !important;
+            font-family: 'verdana' !important;
+            font-size: 13px;
+            color: #ccc;
+            transition: background-color, color;
+            transition-duration: 0.4s;
+        }
+
+
+            .mainmenu #mainli:hover {
+                color: #e47911;
+                transition: color;
+                transition-duration: 0.4s;
+                border-bottom: 2px solid #e47911;
+            }
+
+                .mainmenu #mainli:hover a {
+                    color: #e47911;
+                    transition: color;
+                    transition-duration: 0.4s;
+                }
+
+        .anchor {
+            text-decoration: none;
+            color: #ccc;
+        }
+
+        .anchorSub {
+            text-decoration: none;
+            color: #ccc;
+        }
+
+        .submenu {
+            background-color: #ccc;
+            color: #626060;
+            position: absolute;
+            margin-left: -18%;
+            margin-top: 17%;
+            width: -moz-max-content;
+            box-shadow: 5px 5px 10px #888888;
+            transition: background-color, color;
+            transition-duration: 0.4s;
+        }
+
+            .submenu li {
+                position: relative;
+                cursor: pointer;
+                padding: 15px 20px;
+                display: none;
+                color: #ccc;
+                background-color: white;
+                margin-left: -18%;
+                border-bottom: 1px solid #cccccc;
+                font-family: 'verdana' !important;
+                font-size: 13px;
+            }
+
+                .submenu li a {
+                    color: #ccc;
+                }
+
+        .fourthsec:hover ul li {
+            display: block;
+        }
+
+        .submenu li:hover {
+            background-color: #ccc;
+            transition: background-color, color;
+            transition-duration: 0.4s;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="cphAdminHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background-color: #b2babb;">
+    <form id="form1" runat="server">
+        <div>
+            <div style="background-color: #232f3e; width: auto; height: 180px; margin-top: -1%;">
+                <div style="margin-left: 0%; padding-top: 4%;">
+                    <ul type="none" class="mainmenu">
+                        <li id="mainli" class="firstsec"><a href="../Masters/CategoryManagement.aspx" class="anchorSub">CATEGORY MANAGEMENT </a></li>
+                        <li id="mainli" class="secondsec"><a href="../Masters/Product Manager.aspx" class="anchorSub">PRODUCT MANAGEMENT </a></li>
+                        <li id="mainli" class="thirdsec"><a href="../Masters/UserManagement.aspx" class="anchorSub">USER MANAGEMENT </a></li>
+                        <li id="mainli" class="fourthsec">REPORTS 
+                    <ul type="none" class="submenu">
+                        <li><a href="../Crystal_Report/SalesSummary.aspx" class="anchor">SALES SUMMARY </a></li>
+                        <li><a href="../Crystal_Report/Salesstatistics.aspx" class="anchor">PRODUCT WISE STATISTICS</a> </li>
+                    </ul>
+                        </li>
+                        <li id="mainli" class="fifthsec"><a href="../Masters/AdminRegesteration.aspx" class="anchor">MANAGE ADMINISTRATORS </a></li>
+                        <li id="mainli" class="sixthsec"><a href="../Masters/OrderAdmin.aspx" class="anchorSub">ORDER MANAGEMENT </a></li>
+                        <li id="mainli" class="seventhsec"><a href="../Transaction/adminlogin.aspx" class="anchor">LOGOUT </a></li>
+                    </ul>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="cphAdminBody" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
